@@ -36,3 +36,60 @@ user_id - Уникальный номер пользователя
 
 # Тестирование API
 Тестирование API проводилось с помощью Postman
+
+## Авторизация
+Запрос на авторизацию
+```
+{
+    "email": "fwefwef@gmail.com",
+    "password": "12dqwfqwf"
+
+}
+```
+Ответ
+```
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MzY0ODc3MywianRpIjoiZmIyY2MyMDQtYjEwMS00MDY2LTkyYTgtYmIxYWI1ODIwMDE2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE2OTM2NDg3NzMsImV4cCI6MTY5NDI1MzU3M30.lKlQrRIQh41Mi190jLwX8k4jAtaxsh3J5zU3xqafz9E"
+}
+```
+## Список всех транзакций пользователя
+Ответ на запрос без сессионного ключа
+```
+{
+    "msg": "Missing Authorization Header"
+}
+```
+Ответ на запрос с сессионным ключом
+```
+"[{\"transaction_id\": 1, \"sum\": 123.0, \"date\": \"23-02-2023\", \"category\": \"Еда\"}, {\"transaction_id\": 2, \"sum\": 999.0, \"date\": \"02-09-2023\", \"category\": \"Такси\"}]"
+```
+
+## Записать транзакцию
+Запрос без сессионного ключа
+```
+{
+    "transaction_sum": "547",
+    "transaction_date": "01-09-2023",
+    "transaction_category": "Перевод"
+}
+```
+Ответ на запрос без сессионного ключа
+```
+{
+    "msg": "Missing Authorization Header"
+}
+```
+Запрос с сессионным ключем
+```
+{
+    "transaction_sum": "547",
+    "transaction_date": "01-09-2023",
+    "transaction_category": "Перевод"
+}
+```
+Ответ с сессионным ключем
+```
+""
+```
+
+
